@@ -1,0 +1,17 @@
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.exe
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.deps.json
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.runtimeconfig.json
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.dll
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.pdb
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.AssemblyReference.cache
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.Form1.resources
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.GenerateResource.cache
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.GeneratedMSBuildEditorConfig.editorconfig
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.AssemblyInfoInputs.cache
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.AssemblyInfo.cs
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.CoreCompileInputs.cache
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.dll
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\refint\Cryptron.dll
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.pdb
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.genruntimeconfig.cache
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\Cryptron\Cryptron\obj\Debug\net6.0-windows\ref\Cryptron.dll
