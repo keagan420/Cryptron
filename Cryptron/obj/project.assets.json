@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\Cryptron\\Cryptron\\Cryptron.csproj",
+      "projectUniqueName": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\Cryptron.csproj",
       "projectName": "Cryptron",
-      "projectPath": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\Cryptron\\Cryptron\\Cryptron.csproj",
+      "projectPath": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\Cryptron.csproj",
       "packagesPath": "C:\\Users\\E7450\\.nuget\\packages\\",
-      "outputPath": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\Cryptron\\Cryptron\\obj\\",
+      "outputPath": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

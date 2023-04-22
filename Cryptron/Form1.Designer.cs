@@ -38,6 +38,7 @@
             bttnGenerateKey = new Button();
             tbKey = new TextBox();
             groupBox3 = new GroupBox();
+            button1 = new Button();
             rtbMessage = new RichTextBox();
             btnSaveFile = new Button();
             btnBrowseFiles = new Button();
@@ -144,9 +145,11 @@
             tbKey.Name = "tbKey";
             tbKey.Size = new Size(489, 23);
             tbKey.TabIndex = 0;
+            tbKey.TextChanged += tbKey_TextChanged;
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(button1);
             groupBox3.Controls.Add(rtbMessage);
             groupBox3.Controls.Add(btnSaveFile);
             groupBox3.Controls.Add(btnBrowseFiles);
@@ -159,9 +162,20 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Encrypt/Decrypt ";
             // 
+            // button1
+            // 
+            button1.Location = new Point(17, 217);
+            button1.Name = "button1";
+            button1.Size = new Size(87, 29);
+            button1.TabIndex = 7;
+            button1.Text = "Clear ";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // rtbMessage
             // 
             rtbMessage.Location = new Point(124, 33);
+            rtbMessage.MaxLength = 1000000;
             rtbMessage.Name = "rtbMessage";
             rtbMessage.Size = new Size(601, 213);
             rtbMessage.TabIndex = 6;
@@ -170,9 +184,9 @@
             // 
             // btnSaveFile
             // 
-            btnSaveFile.Location = new Point(17, 195);
+            btnSaveFile.Location = new Point(17, 167);
             btnSaveFile.Name = "btnSaveFile";
-            btnSaveFile.Size = new Size(99, 52);
+            btnSaveFile.Size = new Size(87, 29);
             btnSaveFile.TabIndex = 1;
             btnSaveFile.Text = "Save File";
             btnSaveFile.UseVisualStyleBackColor = true;
@@ -182,7 +196,7 @@
             // 
             btnBrowseFiles.Location = new Point(17, 32);
             btnBrowseFiles.Name = "btnBrowseFiles";
-            btnBrowseFiles.Size = new Size(99, 46);
+            btnBrowseFiles.Size = new Size(87, 29);
             btnBrowseFiles.TabIndex = 0;
             btnBrowseFiles.Text = "Browse Files";
             btnBrowseFiles.UseVisualStyleBackColor = true;
@@ -190,9 +204,9 @@
             // 
             // btnDecrypt
             // 
-            btnDecrypt.Location = new Point(17, 141);
+            btnDecrypt.Location = new Point(17, 121);
             btnDecrypt.Name = "btnDecrypt";
-            btnDecrypt.Size = new Size(99, 48);
+            btnDecrypt.Size = new Size(87, 29);
             btnDecrypt.TabIndex = 5;
             btnDecrypt.Text = "Decrypt";
             btnDecrypt.UseVisualStyleBackColor = true;
@@ -200,9 +214,9 @@
             // 
             // btnEncrypt
             // 
-            btnEncrypt.Location = new Point(17, 84);
+            btnEncrypt.Location = new Point(17, 76);
             btnEncrypt.Name = "btnEncrypt";
-            btnEncrypt.Size = new Size(99, 51);
+            btnEncrypt.Size = new Size(87, 29);
             btnEncrypt.TabIndex = 4;
             btnEncrypt.Text = "Encrypt";
             btnEncrypt.UseVisualStyleBackColor = true;
@@ -213,7 +227,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(777, 455);
+            ClientSize = new Size(765, 438);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -247,5 +261,6 @@
         private Button btnEncrypt;
         private Button btnDecrypt;
         private RichTextBox rtbMessage;
+        private Button button1;
     }
 }
