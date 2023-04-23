@@ -170,7 +170,7 @@
             button2.Name = "button2";
             button2.Size = new Size(101, 39);
             button2.TabIndex = 8;
-            button2.Text = "Steganography ";
+            button2.Text = "Book Cipher";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 

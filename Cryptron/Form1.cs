@@ -496,12 +496,12 @@ namespace Cryptron
             else
             {
                 MessageBox.Show("Key must be the same length, press the generate key button.");
-                return null;
+                return "";
             }
         }
 
         private string RandomCipher(string input, string key, bool decrypt = false)
-        {  
+        {
             /// This is a Ceasar cipher that uses a random key///
 
             int shift = key.ToUpper().ToCharArray()[0] - 'A'; // calculate the shift value based on the key
