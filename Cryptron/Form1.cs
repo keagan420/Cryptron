@@ -10,6 +10,8 @@ namespace Cryptron
     public partial class Form1 : Form
     {
         bool isEncryped;
+        bool gotfile = false;
+        Form2 f2 = new Form2();
 
         public Form1()
         {
@@ -39,24 +41,36 @@ namespace Cryptron
                     string ciphertext = VigenereCipher(plaintext, key);
                     rtbMessage.Text = ciphertext;
                     isEncryped = true;
+                    MessageBox.Show("Encryption complete");
                 }
                 else if (RVernam.Checked)
                 {
                     string ciphertext = VernamCipher(plaintext, key);
                     rtbMessage.Text = ciphertext;
                     isEncryped = true;
+                    MessageBox.Show("Encryption complete");
                 }
                 else if (Transposition.Checked)
                 {
-                    string ciphertext = TranspositionCipher(plaintext, key);
-                    rtbMessage.Text = ciphertext;
-                    isEncryped = true;
+                    if ((byte)tbKey.Text.Length == (byte)rtbMessage.Text.Length)
+                    {
+                        string ciphertext = TranspositionCipher(plaintext, key);
+                        rtbMessage.Text = ciphertext;
+                        isEncryped = true;
+                        MessageBox.Show("Encryption complete");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Key length must be equal to message length");
+                        MessageBox.Show("Press generate key to get a key that is the same length");
+                    }
                 }
                 else if (radioButton4.Checked)
                 {
                     string ciphertext = RandomCipher(plaintext, key);
                     rtbMessage.Text = ciphertext;
                     isEncryped = true;
+                    MessageBox.Show("Encryption complete");
                 }
                 else
                 {
@@ -67,7 +81,7 @@ namespace Cryptron
             {
                 MessageBox.Show("Please enter a message or choose a file to encrypt");
             }
-            MessageBox.Show("Encryption complete");
+
 
         }
 
@@ -82,24 +96,37 @@ namespace Cryptron
                     string plaintext = VigenereCipher(ciphertext, key, true);
                     rtbMessage.Text = plaintext;
                     isEncryped = true;
+                    MessageBox.Show("Decryption complete");
                 }
                 else if (RVernam.Checked)
                 {
                     string plaintext = VernamCipher(ciphertext, key, true);
                     rtbMessage.Text = plaintext;
                     isEncryped = true;
+                    MessageBox.Show("Decryption complete");
                 }
                 else if (Transposition.Checked)
                 {
-                    string plaintext = TranspositionCipher(ciphertext, key, true);
-                    rtbMessage.Text = plaintext;
-                    isEncryped = true;
+                    if ((byte)tbKey.Text.Length == (byte)rtbMessage.Text.Length)
+                    {
+                        string plaintext = TranspositionCipher(ciphertext, key, true);
+                        rtbMessage.Text = plaintext;
+                        isEncryped = true;
+                        MessageBox.Show("Encryption complete");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Key length must be equal to message length");
+                        MessageBox.Show("Press generate key to get a key that is the same length");
+                    }
+
                 }
                 else if (radioButton4.Checked)
                 {
                     string plaintext = RandomCipher(ciphertext, key, true);
                     rtbMessage.Text = plaintext;
                     isEncryped = true;
+                    MessageBox.Show("Decryption complete");
                 }
                 else
                 {
@@ -129,10 +156,12 @@ namespace Cryptron
                 if (Path.GetExtension(openFileDialog.FileName).ToLower() == ".txt")
                 {
                     rtbMessage.Text = System.Text.Encoding.UTF8.GetString(fileData);
+                    MessageBox.Show("File import complete");
                 }
                 else
                 {
                     rtbMessage.Text = inputFile;
+                    MessageBox.Show("File import complete");
                 }
             }
 
@@ -147,7 +176,12 @@ namespace Cryptron
 
         private void bttnGenerateKey_Click(object sender, EventArgs e)
         {
-            byte[] length = new byte[32];
+            int byteKeyLegth = rtbMessage.Text.Length;
+            byte[] length;
+            if (Transposition.Checked == true)
+            { length = new byte[byteKeyLegth]; }
+            else
+            { length = new byte[32]; }
             const string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             var random = new RNGCryptoServiceProvider();
 
@@ -267,9 +301,9 @@ namespace Cryptron
         {
             /*This cipher uses a key to XOR it with the plain text*/
             int inputLength = input.Length;
-            
+
             //Generate key
-            
+
             var random = RandomNumberGenerator.Create();
             var bytes = new byte[(input.Length)];
             random.GetBytes(bytes);
@@ -282,12 +316,12 @@ namespace Cryptron
             string output = "";
             int keyIndex = 0;
             int keyLength = key.Length;
-            
+
             int[] keyValues = new int[keyLength];
-            
-            
-            
-             
+
+
+
+
             for (int i = 0; i < keyLength; i++)
             {
                 char plain_text = input[i];
@@ -312,8 +346,8 @@ namespace Cryptron
                         output += decrypted;
                     }
                     //return output;
-                            
-                    
+
+
                 }
                 else
                 {
@@ -334,19 +368,159 @@ namespace Cryptron
                 }
 
 
-               
+
             }
             return output.ToString();
         }
 
         private string TranspositionCipher(string input, string key, bool decrypt = false)
         {
-            return null;
+            if (key.Length == input.Length)
+            {
+
+                if (gotfile == true)
+                {
+                    byte[] inputBytes = (decrypt) ? Convert.FromBase64String(input) : Encoding.UTF8.GetBytes(input);
+                    byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+                    int blockSize = keyBytes.Length;
+                    int blockCount = (int)Math.Ceiling(inputBytes.Length / (double)blockSize);
+
+                    byte[] resultBytes = new byte[inputBytes.Length];
+
+                    if (decrypt)
+                    {
+                        // Decrypt the input
+                        for (int i = 0; i < blockCount; i++)
+                        {
+                            for (int j = 0; j < blockSize; j++)
+                            {
+                                int index = j * blockCount + i;
+                                if (index < inputBytes.Length)
+                                {
+                                    resultBytes[index] = inputBytes[i * blockSize + j];
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Encrypt the input
+                        for (int i = 0; i < blockCount; i++)
+                        {
+                            for (int j = 0; j < blockSize; j++)
+                            {
+                                int index = i * blockSize + j;
+                                if (index < inputBytes.Length)
+                                {
+                                    resultBytes[i * blockSize + j] = inputBytes[j * blockCount + i];
+                                }
+                            }
+                        }
+                    }
+
+                    string result = (decrypt) ? Encoding.UTF8.GetString(resultBytes) : Convert.ToBase64String(resultBytes);
+
+                    return result;
+
+                }
+                else
+                {
+                    if (decrypt)
+                    {
+                        int[] keyOrder = Enumerable.Range(0, key.Length).OrderBy(i => key[i]).ToArray();
+                        int numRows = (int)Math.Ceiling((double)input.Length / key.Length);
+                        char[,] grid = new char[numRows, key.Length];
+                        int index = 0;
+                        for (int i = 0; i < numRows; i++)
+                        {
+                            for (int j = 0; j < key.Length; j++)
+                            {
+                                if (index < input.Length)
+                                {
+                                    grid[i, j] = input[index];
+                                    index++;
+                                }
+                            }
+                        }
+                        string encryptedInput = "";
+                        for (int i = 0; i < key.Length; i++)
+                        {
+                            int colIndex = Array.IndexOf(keyOrder, i);
+                            for (int j = 0; j < numRows; j++)
+                            {
+                                if (grid[j, colIndex] != '\0')
+                                {
+                                    encryptedInput += grid[j, colIndex];
+                                }
+                            }
+                        }
+                        return encryptedInput;
+
+
+                    }
+                    else
+                    {
+                        int[] keyOrder = Enumerable.Range(0, key.Length).OrderBy(i => key[i]).ToArray();
+                        int numRows = (int)Math.Ceiling((double)input.Length / key.Length);
+                        char[,] grid = new char[numRows, key.Length];
+                        int index = 0;
+                        for (int i = 0; i < key.Length; i++)
+                        {
+                            int colIndex = Array.IndexOf(keyOrder, i);
+                            for (int j = 0; j < numRows; j++)
+                            {
+                                if (index < input.Length)
+                                {
+                                    grid[j, colIndex] = input[index];
+                                    index++;
+                                }
+                            }
+                        }
+                        string decryptedInput = "";
+                        for (int i = 0; i < numRows; i++)
+                        {
+                            for (int j = 0; j < key.Length; j++)
+                            {
+                                if (grid[i, j] != '\0')
+                                {
+                                    decryptedInput += grid[i, j];
+                                }
+                            }
+                        }
+
+                        return decryptedInput;
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Key must be the same length, press the generate key button.");
+                return null;
+            }
         }
 
         private string RandomCipher(string input, string key, bool decrypt = false)
-        {
-            return null;
+        {  
+            /// This is a Ceasar cipher that uses a random key///
+
+            int shift = key.ToUpper().ToCharArray()[0] - 'A'; // calculate the shift value based on the key
+            if (decrypt) shift = -shift; // if decrypting, invert the shift value
+            char[] inputChars = input.ToCharArray();
+
+            for (int i = 0; i < inputChars.Length; i++)
+            {
+                char c = inputChars[i];
+                if (char.IsLetter(c))
+                {
+                    char offset = char.IsUpper(c) ? 'A' : 'a'; // calculate the ASCII offset for the case of the letter
+                    int shifted = (c - offset + shift) % 26; // apply the shift value and wrap around if needed
+                    if (shifted < 0) shifted += 26; // if the result is negative, add 26 to wrap around again
+                    inputChars[i] = (char)(shifted + offset); // convert back to ASCII character
+                }
+            }
+
+            return new string(inputChars); // return the modified string
         }
 
         private void Transposition_CheckedChanged(object sender, EventArgs e)
@@ -358,23 +532,33 @@ namespace Cryptron
         {
             rtbMessage.Clear();
             Clipboard.SetDataObject(tbKey.Text, true);
-            MessageBox.Show("Key coppied to clipboard." );
-            
+            MessageBox.Show("Key coppied to clipboard.");
+
             tbKey.Clear();
         }
 
         private void tbKey_TextChanged(object sender, EventArgs e)
         {
-            string input = tbKey.Text;
-            bool isAlpha = input.All(c => Char.IsLetter(c));
-            if (!isAlpha) 
+            if (Transposition.Checked == true || RVigenere.Checked == true)
             {
-                MessageBox.Show("Please only enter alphabetical characters");
-                int cursorPosition = tbKey.SelectionStart;
-                tbKey.Text = tbKey.Text.Remove(cursorPosition - 1, 1);
-                tbKey.SelectionStart = cursorPosition - 1;
-                tbKey.SelectionLength = 0;
+                string input = tbKey.Text;
+                bool isAlpha = input.All(c => Char.IsLetter(c));
+                if (!isAlpha)
+                {
+                    MessageBox.Show("Please only enter alphabetical characters");
+                    int cursorPosition = tbKey.SelectionStart;
+                    tbKey.Text = tbKey.Text.Remove(cursorPosition - 1, 1);
+                    tbKey.SelectionStart = cursorPosition - 1;
+                    tbKey.SelectionLength = 0;
+                }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            f2.Show();
+            this.Hide();
         }
     }
 }

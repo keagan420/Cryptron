@@ -35,9 +35,10 @@
             RVernam = new RadioButton();
             RVigenere = new RadioButton();
             groupBox2 = new GroupBox();
+            tbKey = new RichTextBox();
             bttnGenerateKey = new Button();
-            tbKey = new TextBox();
             groupBox3 = new GroupBox();
+            button2 = new Button();
             button1 = new Button();
             rtbMessage = new RichTextBox();
             btnSaveFile = new Button();
@@ -77,10 +78,10 @@
             radioButton4.AutoSize = true;
             radioButton4.Location = new Point(107, 47);
             radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(94, 19);
+            radioButton4.Size = new Size(60, 19);
             radioButton4.TabIndex = 3;
             radioButton4.TabStop = true;
-            radioButton4.Text = "radioButton4";
+            radioButton4.Text = "Ceasar";
             radioButton4.UseVisualStyleBackColor = true;
             radioButton4.CheckedChanged += radioButton4_CheckedChanged;
             // 
@@ -120,14 +121,22 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(bttnGenerateKey);
             groupBox2.Controls.Add(tbKey);
+            groupBox2.Controls.Add(bttnGenerateKey);
             groupBox2.Location = new Point(248, 73);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(510, 80);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Enter key or generate a random key ";
+            // 
+            // tbKey
+            // 
+            tbKey.Location = new Point(15, 19);
+            tbKey.Name = "tbKey";
+            tbKey.Size = new Size(487, 25);
+            tbKey.TabIndex = 2;
+            tbKey.Text = "";
             // 
             // bttnGenerateKey
             // 
@@ -139,16 +148,9 @@
             bttnGenerateKey.UseVisualStyleBackColor = true;
             bttnGenerateKey.Click += bttnGenerateKey_Click;
             // 
-            // tbKey
-            // 
-            tbKey.Location = new Point(15, 21);
-            tbKey.Name = "tbKey";
-            tbKey.Size = new Size(489, 23);
-            tbKey.TabIndex = 0;
-            tbKey.TextChanged += tbKey_TextChanged;
-            // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(button2);
             groupBox3.Controls.Add(button1);
             groupBox3.Controls.Add(rtbMessage);
             groupBox3.Controls.Add(btnSaveFile);
@@ -162,11 +164,21 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Encrypt/Decrypt ";
             // 
+            // button2
+            // 
+            button2.Location = new Point(17, 207);
+            button2.Name = "button2";
+            button2.Size = new Size(101, 39);
+            button2.TabIndex = 8;
+            button2.Text = "Steganography ";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // button1
             // 
-            button1.Location = new Point(17, 217);
+            button1.Location = new Point(17, 172);
             button1.Name = "button1";
-            button1.Size = new Size(87, 29);
+            button1.Size = new Size(101, 29);
             button1.TabIndex = 7;
             button1.Text = "Clear ";
             button1.UseVisualStyleBackColor = true;
@@ -184,9 +196,9 @@
             // 
             // btnSaveFile
             // 
-            btnSaveFile.Location = new Point(17, 167);
+            btnSaveFile.Location = new Point(17, 137);
             btnSaveFile.Name = "btnSaveFile";
-            btnSaveFile.Size = new Size(87, 29);
+            btnSaveFile.Size = new Size(101, 29);
             btnSaveFile.TabIndex = 1;
             btnSaveFile.Text = "Save File";
             btnSaveFile.UseVisualStyleBackColor = true;
@@ -196,7 +208,7 @@
             // 
             btnBrowseFiles.Location = new Point(17, 32);
             btnBrowseFiles.Name = "btnBrowseFiles";
-            btnBrowseFiles.Size = new Size(87, 29);
+            btnBrowseFiles.Size = new Size(101, 29);
             btnBrowseFiles.TabIndex = 0;
             btnBrowseFiles.Text = "Browse Files";
             btnBrowseFiles.UseVisualStyleBackColor = true;
@@ -204,9 +216,9 @@
             // 
             // btnDecrypt
             // 
-            btnDecrypt.Location = new Point(17, 121);
+            btnDecrypt.Location = new Point(17, 102);
             btnDecrypt.Name = "btnDecrypt";
-            btnDecrypt.Size = new Size(87, 29);
+            btnDecrypt.Size = new Size(101, 29);
             btnDecrypt.TabIndex = 5;
             btnDecrypt.Text = "Decrypt";
             btnDecrypt.UseVisualStyleBackColor = true;
@@ -214,9 +226,9 @@
             // 
             // btnEncrypt
             // 
-            btnEncrypt.Location = new Point(17, 76);
+            btnEncrypt.Location = new Point(17, 67);
             btnEncrypt.Name = "btnEncrypt";
-            btnEncrypt.Size = new Size(87, 29);
+            btnEncrypt.Size = new Size(101, 29);
             btnEncrypt.TabIndex = 4;
             btnEncrypt.Text = "Encrypt";
             btnEncrypt.UseVisualStyleBackColor = true;
@@ -227,7 +239,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SlateGray;
-            ClientSize = new Size(765, 438);
+            ClientSize = new Size(765, 460);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -238,7 +250,6 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -254,7 +265,6 @@
         private RadioButton RVigenere;
         private GroupBox groupBox2;
         private Button bttnGenerateKey;
-        private TextBox tbKey;
         private GroupBox groupBox3;
         private Button btnBrowseFiles;
         private Button btnSaveFile;
@@ -262,5 +272,7 @@
         private Button btnDecrypt;
         private RichTextBox rtbMessage;
         private Button button1;
+        private RichTextBox tbKey;
+        private Button button2;
     }
 }
