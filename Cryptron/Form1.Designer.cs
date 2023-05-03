@@ -45,6 +45,7 @@
             btnBrowseFiles = new Button();
             btnDecrypt = new Button();
             btnEncrypt = new Button();
+            rbAES = new RadioButton();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -62,13 +63,14 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(rbAES);
             groupBox1.Controls.Add(radioButton4);
             groupBox1.Controls.Add(Transposition);
             groupBox1.Controls.Add(RVernam);
             groupBox1.Controls.Add(RVigenere);
             groupBox1.Location = new Point(27, 73);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(215, 80);
+            groupBox1.Size = new Size(229, 80);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Select Encpryption Method";
@@ -123,26 +125,27 @@
             // 
             groupBox2.Controls.Add(tbKey);
             groupBox2.Controls.Add(bttnGenerateKey);
-            groupBox2.Location = new Point(248, 73);
+            groupBox2.Location = new Point(278, 73);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(510, 80);
+            groupBox2.Size = new Size(480, 80);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Enter key or generate a random key ";
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // tbKey
             // 
             tbKey.Location = new Point(15, 19);
             tbKey.Name = "tbKey";
-            tbKey.Size = new Size(487, 25);
+            tbKey.Size = new Size(460, 25);
             tbKey.TabIndex = 2;
             tbKey.Text = "";
             // 
             // bttnGenerateKey
             // 
-            bttnGenerateKey.Location = new Point(15, 50);
+            bttnGenerateKey.Location = new Point(13, 51);
             bttnGenerateKey.Name = "bttnGenerateKey";
-            bttnGenerateKey.Size = new Size(489, 23);
+            bttnGenerateKey.Size = new Size(462, 23);
             bttnGenerateKey.TabIndex = 1;
             bttnGenerateKey.Text = "Generate key ";
             bttnGenerateKey.UseVisualStyleBackColor = true;
@@ -234,6 +237,18 @@
             btnEncrypt.UseVisualStyleBackColor = true;
             btnEncrypt.Click += btnEncrypt_Click;
             // 
+            // rbAES
+            // 
+            rbAES.AutoSize = true;
+            rbAES.Location = new Point(158, 21);
+            rbAES.Name = "rbAES";
+            rbAES.Size = new Size(45, 19);
+            rbAES.TabIndex = 4;
+            rbAES.TabStop = true;
+            rbAES.Text = "AES";
+            rbAES.UseVisualStyleBackColor = true;
+            rbAES.CheckedChanged += rbAES_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -274,5 +289,6 @@
         private Button button1;
         private RichTextBox tbKey;
         private Button button2;
+        private RadioButton rbAES;
     }
 }

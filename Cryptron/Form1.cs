@@ -72,6 +72,13 @@ namespace Cryptron
                     isEncryped = true;
                     MessageBox.Show("Encryption complete");
                 }
+                else if (rbAES.Checked)
+                {
+                    string ciphertext = AEScipher(plaintext, key );
+                    rtbMessage.Text = ciphertext;
+                    isEncryped = true;
+                    MessageBox.Show("Encryption complete");
+                }
                 else
                 {
                     MessageBox.Show("Please select a cipher");
@@ -124,6 +131,13 @@ namespace Cryptron
                 else if (radioButton4.Checked)
                 {
                     string plaintext = RandomCipher(ciphertext, key, true);
+                    rtbMessage.Text = plaintext;
+                    isEncryped = true;
+                    MessageBox.Show("Decryption complete");
+                }
+                else if (rbAES.Checked)
+                {
+                    string plaintext = AEScipher(ciphertext, key, true);
                     rtbMessage.Text = plaintext;
                     isEncryped = true;
                     MessageBox.Show("Decryption complete");
@@ -523,6 +537,50 @@ namespace Cryptron
             return new string(inputChars); // return the modified string
         }
 
+        private string AEScipher(string input, string key, bool decrypt = false)
+        {
+            if (decrypt)
+            {
+                byte[] inputBytes = Convert.FromBase64String(input);
+                byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+                byte[] resultBytes = new byte[inputBytes.Length];
+                using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+                {
+                    aes.Key = keyBytes;
+                    aes.Mode = CipherMode.ECB;
+                    aes.Padding = PaddingMode.PKCS7;
+                    using (ICryptoTransform transform = aes.CreateDecryptor())
+                    {
+                        resultBytes = transform.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+                    }
+                }
+                string result = Encoding.UTF8.GetString(resultBytes);
+                return result;
+            }
+            else
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+                byte[] resultBytes = new byte[inputBytes.Length];
+                using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
+                {
+                    aes.Key = keyBytes;
+                    aes.Mode = CipherMode.ECB;
+                    aes.Padding = PaddingMode.PKCS7;
+                    using (ICryptoTransform transform = aes.CreateEncryptor())
+                    {
+                        resultBytes = transform.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
+                    }
+                }
+                string result = Convert.ToBase64String(resultBytes);
+                return result;
+            }
+
+            
+            
+        }
+
+
         private void Transposition_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -559,6 +617,16 @@ namespace Cryptron
 
             f2.Show();
             this.Hide();
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbAES_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
