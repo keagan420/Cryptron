@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Github\\Crypton\\Cryptron\\Cryptron\\Cryptron.csproj": {}
+    "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\Cryptron.csproj": {}
   },
   "projects": {
-    "C:\\Github\\Crypton\\Cryptron\\Cryptron\\Cryptron.csproj": {
+    "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\Cryptron.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Github\\Crypton\\Cryptron\\Cryptron\\Cryptron.csproj",
+        "projectUniqueName": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\Cryptron.csproj",
         "projectName": "Cryptron",
-        "projectPath": "C:\\Github\\Crypton\\Cryptron\\Cryptron\\Cryptron.csproj",
-        "packagesPath": "C:\\Users\\breth\\.nuget\\packages\\",
-        "outputPath": "C:\\Github\\Crypton\\Cryptron\\Cryptron\\obj\\",
+        "projectPath": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\Cryptron.csproj",
+        "packagesPath": "C:\\Users\\E7450\\.nuget\\packages\\",
+        "outputPath": "C:\\NWU\\IT_Honnours\\Semester1\\Security\\Cryptron\\CRYPTON\\Cryptron\\Cryptron\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\breth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\E7450\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

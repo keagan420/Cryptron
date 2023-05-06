@@ -49,3 +49,5 @@ C:\Github\Crypton\Cryptron\Cryptron\obj\Debug\net6.0-windows\refint\Cryptron.dll
 C:\Github\Crypton\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.pdb
 C:\Github\Crypton\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.genruntimeconfig.cache
 C:\Github\Crypton\Cryptron\Cryptron\obj\Debug\net6.0-windows\ref\Cryptron.dll
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\CRYPTON\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.Form2.resources
+C:\NWU\IT_Honnours\Semester1\Security\Cryptron\CRYPTON\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.Properties.Resources.resources
