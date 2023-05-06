@@ -192,8 +192,9 @@ namespace Cryptron
         {
             int byteKeyLegth = rtbMessage.Text.Length;
             byte[] length;
-            if (Transposition.Checked == true)
+            if (Transposition.Checked == true || RVernam.Checked == true)
             { length = new byte[byteKeyLegth]; }
+            
             else
             { length = new byte[32]; }
             const string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -309,75 +310,65 @@ namespace Cryptron
             return output;
         }
 
-
+        private void VernamKey(string text)
+        {
+            var random = RandomNumberGenerator.Create();
+            var bytes = new byte[(text.Length)];
+            random.GetBytes(bytes);
+            string mykey = "";
+            mykey = Encoding.ASCII.GetString(bytes);
+            tbKey.Text = mykey;
+        }
 
         private string VernamCipher(string input, string key, bool decrypt = false)
         {
             /*This cipher uses a key to XOR it with the plain text*/
-            int inputLength = input.Length;
+
 
             //Generate key
 
-            var random = RandomNumberGenerator.Create();
+            /*var random = RandomNumberGenerator.Create();
             var bytes = new byte[(input.Length)];
             random.GetBytes(bytes);
             string mykey = "";
             mykey = Encoding.ASCII.GetString(bytes);
             key = mykey;
-            MessageBox.Show(key);
+            MessageBox.Show(key);*/
 
             //have an array for key
+            //VernamKey(input);
+            key = tbKey.Text;
             string output = "";
-            int keyIndex = 0;
+ 
             int keyLength = key.Length;
-
-            int[] keyValues = new int[keyLength];
-
-
-
 
             for (int i = 0; i < keyLength; i++)
             {
-                char plain_text = input[i];
+                char plain_text = input[i % input.Length];
                 char key_text = key[i % key.Length];
-                char[] cipher_text = input.ToCharArray();
+                
                 int xor;
                 if (decrypt)
                 {
-                    //XOR the ciphertext and the same key used for encryption
-                    for (int j = 0; j < cipher_text.Length; j++)
-                    {
-                        output = "";
-                        int encryptedCode = (int)j;
-                        //MessageBox.Show(output.ToString());
-                        char text = cipher_text[j];
-                        xor = text ^ key_text;
-                        if (xor < 65 || xor > 126)
-                        {
-                            xor = xor + 65;
-                        }
-                        char decrypted = (char)(xor);
-                        output += decrypted;
-                    }
-                    //return output;
+                    //MessageBox.Show("Decrypting");
+                    string cipherText = rtbMessage.Text;
+                    char cipherChar = cipherText[i % cipherText.Length];
 
+                    xor = cipherChar ^ key_text;
+                    char plaintext = (char)xor;
+                    output += plaintext;
+                    
 
                 }
                 else
                 {
+                    //MessageBox.Show("Encrypting");
                     //XOR the plaintext and the key used for encryption
-                    //XORed values have to be within the range of 65 and 126
+                    
                     xor = plain_text ^ key_text;
-                    while (xor < 65 || xor > 126)
-                    {
-                        /*This while loop checks if the result from the
-                         xor is outside of the 65 - 126 range of ascii values
-                        if it is outside, 65 will be subtracted from xor*/
-                        xor = xor - 65;
-                    }
-                    char plaintext = (char)xor;
-                    output += plaintext;
-                    cipher_text[i] = plaintext;
+                    char cipher = (char)xor;
+                    output += cipher;
+                    
                     //return output.ToString();
                 }
 
