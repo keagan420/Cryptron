@@ -342,7 +342,7 @@ namespace Cryptron
  
             int keyLength = key.Length;
 
-            for (int i = 0; i < keyLength; i++)
+            for (int i = 0; i < (keyLength); i++)
             {
                 char plain_text = input[i % input.Length];
                 char key_text = key[i % key.Length];
@@ -504,7 +504,7 @@ namespace Cryptron
                 return "";
             }
         }
-
+        
         private string RandomCipher(string input, string key, bool decrypt = false)
         {
             /// This is a Ceasar cipher that uses a random key///

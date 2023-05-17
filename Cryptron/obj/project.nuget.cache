@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "z3rGDd720sM9t5eqblVxlNfCXid38uzkx08AZa4LN6b+vrLiqyF1G9jUe4R5OOpV0JrkTd06IdLTjtm3aZ+oYg==",
+  "dgSpecHash": "pqw2VoeZi3LhHwonpwY3/i1JC06SClk1LdiQKDtpNR6W0NAYZQd7mIW2+Lz5n1ONWNoRfLq96eNOi+t7G1GfPw==",
   "success": true,
   "projectFilePath": "C:\\Github\\Cryptron\\Cryptron\\Cryptron.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\breth\\.nuget\\packages\\copilotdev.net.api\\1.1.0\\copilotdev.net.api.1.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
