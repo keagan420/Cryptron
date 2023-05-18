@@ -95,6 +95,32 @@ namespace Cryptron
 
         }
         
+        private static string Fib_cipher_encrypt(int n, string txt, string key)
+        {
+            int txtLength = txt.Length;
+            int[] sequence = new int[txtLength];
+            string revConcat = ReverseConcatenate(txt, key);
+            int revConcatLength = revConcat.Length;
+            sequence = Fibonacci(n, revConcatLength);
+            string result = "";
+           
+
+            for(int i = 0; i < revConcatLength; i++)
+            {
+                int char_val = (int)revConcat[i];
+                char character = revConcat[i];
+                int num = sequence[i];
+                if (Char.IsUpper(character))
+                {
+                    result += (char)(((char_val + num - 65) % 26) + 65);
+                }
+                else
+                {
+                    result += (char)(((char_val + num - 97) % 26) + 97);
+                }
+            }
+            return result;
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -111,17 +137,18 @@ namespace Cryptron
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
             int[] fib = new int[tbMessage.Text.Length];
+            int n = int.Parse(tbStart.Text);
             string plainText = tbMessage.Text;
             string key = GenerateKey();
-            string cipherText = ReverseConcatenate(plainText, key);
-            
-            //MessageBox.Show(key);
-            fib = Fibonacci(3, 6);
-            /*for(int i = 0; i < fib.Length; i++)
+            string rev_text = ReverseConcatenate(plainText, key);
+            string cipherText = Fib_cipher_encrypt(n, plainText, key);
+            /*fib = Fibonacci(3, 6);
+            for(int i = 0; i < fib.Length; i++)
             {
                 tbText.Text += fib[i].ToString() + " ";
             }*/
-            tbText.Text = "Plain text: " + plainText + "\nKey: " + key +  "\nCipherText before fibonacci cipher:" + cipherText;
+            tbText.Text = "Plain text: " + plainText + "\nKey: " + key +  "\nCipherText before fibonacci cipher:" + rev_text + 
+                "\nCipher text after fibonacci: " + cipherText;
             
 
         }

@@ -74,7 +74,7 @@ namespace Cryptron
                 }
                 else if (rbAES.Checked)
                 {
-                    string ciphertext = AEScipher(plaintext, key );
+                    string ciphertext = AEScipher(plaintext, key);
                     rtbMessage.Text = ciphertext;
                     isEncryped = true;
                     MessageBox.Show("Encryption complete");
@@ -190,7 +190,7 @@ namespace Cryptron
 
         private void bttnGenerateKey_Click(object sender, EventArgs e)
         {
-            
+
             int byteKeyLegth = rtbMessage.Text.Length;
             byte[] length;
             if (Transposition.Checked == true || RVernam.Checked == true)
@@ -199,7 +199,7 @@ namespace Cryptron
 
             /*else if (RVigenere.Checked == true)
             { length = new byte[byteKeyLegth]; }*/
-            
+
             else
             { length = new byte[32]; }
             const string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -315,7 +315,7 @@ namespace Cryptron
             return output;
         }
 
-        
+
 
         private string VernamCipher(string input, string key, bool decrypt = false)
         {
@@ -336,16 +336,18 @@ namespace Cryptron
             //VernamKey(input);
             key = tbKey.Text;
             string output = "";
- 
+
             int keyLength = key.Length;
 
             for (int i = 0; i < (keyLength); i++)
             {
                 char plain_text = input[i % input.Length];
                 char key_text = key[i % key.Length];
-                
+
                 int xor;
+
                 
+
                 if (decrypt)
                 {
                     //MessageBox.Show("Decrypting");
@@ -356,32 +358,32 @@ namespace Cryptron
                     while (xor < 32 || xor > 126)
                     {
                         xor = xor - 32;
-                    }   
+                    }
                     char cipher = (char)xor;
                     char plaintext = (char)xor;
                     output += plaintext;
-                    
+
 
                 }
                 else
                 {
                     //MessageBox.Show("Encrypting");
                     //XOR the plaintext and the key used for encryption
-                    
+
                     xor = plain_text ^ key_text;
 
                     while (xor < 32 || xor > 126)
                     {
                         xor = xor + 32;
-                    }   
+                    }
                     char cipher = (char)xor;
                     output += cipher;
-                    
+
                     //return output.ToString();
                 }
                 //encrypt using vernam cipher
 
-               
+
 
 
             }
@@ -514,7 +516,7 @@ namespace Cryptron
                 return "";
             }
         }
-        
+
         private string RandomCipher(string input, string key, bool decrypt = false)
         {
             /// This is a Ceasar cipher that uses a random key///
@@ -577,8 +579,8 @@ namespace Cryptron
                 return result;
             }
 
-            
-            
+
+
         }
 
 
@@ -626,6 +628,11 @@ namespace Cryptron
         }
 
         private void rbAES_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RVigenere_CheckedChanged(object sender, EventArgs e)
         {
 
         }
