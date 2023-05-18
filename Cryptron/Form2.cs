@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
@@ -14,39 +15,39 @@ namespace Cryptron
 {
     public partial class Form2 : Form
     {
-        private string bookText = "";
-        private Dictionary<string, string> wordIndexMap = new Dictionary<string, string>();
-        string word = "";
-
-        //fibonacci sequence
-        void Fibonacci(int start, int nth)
-        {
-            //fibonacci seqence starting from start and ending at nth
-            int a = 0;
-            int b = 1;
-            int c = 0;
-            for (int i = (start - 1); i < nth; i++)
-            {
-                c = a + b;
-                a = b;
-                b = c;
-                if (i >= start)
-                {
-                    tbText.Text += c + " ";
-                }
-            }
-
-        }
+        
         public Form2()
         {
             InitializeComponent();
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
+        //fibonacci sequence
+        public static int[] Fibonacci(int start, int nth)
+        {
+            //fibonacci sequence that starts at the position of the start variable and has a length of the nth variable
+            int[] seq = new int[nth];
+            if (start <= 1)
+            {
+                seq[0] = 0;
+                seq[1] = 1;
+            }
+            else
+            {
+                seq[0] = start;
+                seq[1] = start + 1;
+            }
+            for (int i = 2; i < nth; i++)
+            {
+                seq[i] = seq[i - 1] + seq[i - 2];
+                
+            }
+            return seq;
         }
+        
+
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -57,16 +58,18 @@ namespace Cryptron
             this.Close();
         }
 
-        private void btnOpen_Click(object sender, EventArgs e)//butto
-        {
-
-
-        }
+       
 
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            Fibonacci(3, 6);
+            int[] fib = new int[tbMessage.Text.Length];
+            fib = Fibonacci(3, 6);
+            for(int i = 0; i < fib.Length; i++)
+            {
+                tbText.Text += fib[i].ToString() + " ";
+            }
+            //tbText.Text = fib[0].ToString();
         }
 
         private void btnDecrypt_Click(object sender, EventArgs e)
@@ -92,6 +95,10 @@ namespace Cryptron
                 key.Append(alphabet[index]);
             }
             MessageBox.Show(key.ToString());
+
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
