@@ -70,3 +70,5 @@ C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\refint\Cryptron.dll
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.pdb
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.genruntimeconfig.cache
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\ref\Cryptron.dll
+C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\CopilotDev.NET.Api.dll
+C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.CopyComplete

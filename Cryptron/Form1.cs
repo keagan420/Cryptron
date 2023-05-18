@@ -190,10 +190,15 @@ namespace Cryptron
 
         private void bttnGenerateKey_Click(object sender, EventArgs e)
         {
+            
             int byteKeyLegth = rtbMessage.Text.Length;
             byte[] length;
             if (Transposition.Checked == true || RVernam.Checked == true)
+            //if (Transposition.Checked == true
             { length = new byte[byteKeyLegth]; }
+
+            /*else if (RVigenere.Checked == true)
+            { length = new byte[byteKeyLegth]; }*/
             
             else
             { length = new byte[32]; }
@@ -310,15 +315,7 @@ namespace Cryptron
             return output;
         }
 
-        private void VernamKey(string text)
-        {
-            var random = RandomNumberGenerator.Create();
-            var bytes = new byte[(text.Length)];
-            random.GetBytes(bytes);
-            string mykey = "";
-            mykey = Encoding.ASCII.GetString(bytes);
-            tbKey.Text = mykey;
-        }
+        
 
         private string VernamCipher(string input, string key, bool decrypt = false)
         {
@@ -348,6 +345,7 @@ namespace Cryptron
                 char key_text = key[i % key.Length];
                 
                 int xor;
+                
                 if (decrypt)
                 {
                     //MessageBox.Show("Decrypting");
@@ -355,6 +353,11 @@ namespace Cryptron
                     char cipherChar = cipherText[i % cipherText.Length];
 
                     xor = cipherChar ^ key_text;
+                    while (xor < 32 || xor > 126)
+                    {
+                        xor = xor - 32;
+                    }   
+                    char cipher = (char)xor;
                     char plaintext = (char)xor;
                     output += plaintext;
                     
@@ -366,12 +369,19 @@ namespace Cryptron
                     //XOR the plaintext and the key used for encryption
                     
                     xor = plain_text ^ key_text;
+
+                    while (xor < 32 || xor > 126)
+                    {
+                        xor = xor + 32;
+                    }   
                     char cipher = (char)xor;
                     output += cipher;
                     
                     //return output.ToString();
                 }
+                //encrypt using vernam cipher
 
+               
 
 
             }

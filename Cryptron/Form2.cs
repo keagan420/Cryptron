@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,27 @@ namespace Cryptron
     {
         private string bookText = "";
         private Dictionary<string, string> wordIndexMap = new Dictionary<string, string>();
+        string word = "";
 
+        //fibonacci sequence
+        void Fibonacci(int start, int nth)
+        {
+            //fibonacci seqence starting from start and ending at nth
+            int a = 0;
+            int b = 1;
+            int c = 0;
+            for (int i = (start - 1); i < nth; i++)
+            {
+                c = a + b;
+                a = b;
+                b = c;
+                if (i >= start)
+                {
+                    tbText.Text += c + " ";
+                }
+            }
 
+        }
         public Form2()
         {
             InitializeComponent();
@@ -37,57 +57,42 @@ namespace Cryptron
             this.Close();
         }
 
-        private void btnOpen_Click(object sender, EventArgs e)
+        private void btnOpen_Click(object sender, EventArgs e)//butto
         {
-            //Generate a random key for the cipher
-            var random = RandomNumberGenerator.Create();
-            string text = tbMessage.Text;
-            var bytes = new byte[(text.Length)];
-            random.GetBytes(bytes);
-            string mykey = "";
-            mykey = Encoding.ASCII.GetString(bytes);
-            //tbKey.Text = mykey;
+
 
         }
 
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            
+            Fibonacci(3, 6);
         }
 
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            tbMessage.Clear();
-            string ciphertext = tbKey.Text.ToLower();
-            StringBuilder plaintextBuilder = new StringBuilder();
 
-            foreach (string index in ciphertext.Split(';'))
+            ;
+        }
+
+        private void btnGenerateKey_Click(object sender, EventArgs e)
+        {
+            //Generate random key based on english alphabet
+            int byteKeyLegth = tbMessage.Text.Length;
+            byte[] length;
+            length = new byte[byteKeyLegth];
+            const string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var random = new RNGCryptoServiceProvider();
+
+            random.GetBytes(length);
+            var key = new StringBuilder();
+            foreach (var b in length)
             {
-                if (index != "")
-                {
-                    string[] parts = index.Split(':');
-                    int pageIndex = int.Parse(parts[0]);
-                    int lineIndex = int.Parse(parts[1]);
-                    int wordIndex = int.Parse(parts[2]);
-
-                    string[] words = bookText.Split(' ');
-                    int wordCount = (pageIndex - 1) * 300 + (lineIndex - 1) * 10 + wordIndex;
-
-                    if (wordCount <= words.Length)
-                    {
-                        string word = words[wordCount - 1];
-                        plaintextBuilder.Append($"{word} ");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Invalid index {index} in ciphertext!");
-                        return;
-                    }
-                }
+                int index = b % alphabet.Length;
+                key.Append(alphabet[index]);
             }
+            MessageBox.Show(key.ToString());
 
-            tbMessage.Text = plaintextBuilder.ToString();
         }
     }
 
