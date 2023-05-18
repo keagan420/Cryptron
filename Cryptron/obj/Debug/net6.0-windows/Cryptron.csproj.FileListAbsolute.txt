@@ -52,10 +52,8 @@ C:\Github\Crypton\Cryptron\Cryptron\obj\Debug\net6.0-windows\ref\Cryptron.dll
 C:\NWU\IT_Honnours\Semester1\Security\Cryptron\CRYPTON\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.Form2.resources
 C:\NWU\IT_Honnours\Semester1\Security\Cryptron\CRYPTON\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.Properties.Resources.resources
 C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.exe
-C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.deps.json
-C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.runtimeconfig.json
 C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.dll
-C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.pdb
+C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\CopilotDev.NET.Api.dll
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.AssemblyReference.cache
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.Form1.resources
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.Form2.resources
@@ -65,10 +63,12 @@ C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.GeneratedMSBuildEd
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.AssemblyInfoInputs.cache
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.AssemblyInfo.cs
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.CoreCompileInputs.cache
+C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.CopyComplete
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.dll
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\refint\Cryptron.dll
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.pdb
+C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.deps.json
+C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.runtimeconfig.json
+C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\Cryptron.pdb
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.genruntimeconfig.cache
 C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\ref\Cryptron.dll
-C:\Github\Cryptron\Cryptron\bin\Debug\net6.0-windows\CopilotDev.NET.Api.dll
-C:\Github\Cryptron\Cryptron\obj\Debug\net6.0-windows\Cryptron.csproj.CopyComplete
