@@ -65,20 +65,7 @@ namespace Cryptron
                         MessageBox.Show("Press generate key to get a key that is the same length");
                     }
                 }
-                else if (radioButton4.Checked)
-                {
-                    string ciphertext = RandomCipher(plaintext, key);
-                    rtbMessage.Text = ciphertext;
-                    isEncryped = true;
-                    MessageBox.Show("Encryption complete");
-                }
-                else if (rbAES.Checked)
-                {
-                    string ciphertext = AEScipher(plaintext, key);
-                    rtbMessage.Text = ciphertext;
-                    isEncryped = true;
-                    MessageBox.Show("Encryption complete");
-                }
+               
                 else
                 {
                     MessageBox.Show("Please select a cipher");
@@ -128,20 +115,7 @@ namespace Cryptron
                     }
 
                 }
-                else if (radioButton4.Checked)
-                {
-                    string plaintext = RandomCipher(ciphertext, key, true);
-                    rtbMessage.Text = plaintext;
-                    isEncryped = true;
-                    MessageBox.Show("Decryption complete");
-                }
-                else if (rbAES.Checked)
-                {
-                    string plaintext = AEScipher(ciphertext, key, true);
-                    rtbMessage.Text = plaintext;
-                    isEncryped = true;
-                    MessageBox.Show("Decryption complete");
-                }
+               
                 else
                 {
                     MessageBox.Show("Please select a cipher");
@@ -190,15 +164,10 @@ namespace Cryptron
 
         private void bttnGenerateKey_Click(object sender, EventArgs e)
         {
-
             int byteKeyLegth = rtbMessage.Text.Length;
             byte[] length;
             if (Transposition.Checked == true || RVernam.Checked == true)
-            //if (Transposition.Checked == true
             { length = new byte[byteKeyLegth]; }
-
-            /*else if (RVigenere.Checked == true)
-            { length = new byte[byteKeyLegth]; }*/
 
             else
             { length = new byte[32]; }
@@ -321,19 +290,6 @@ namespace Cryptron
         {
             /*This cipher uses a key to XOR it with the plain text*/
 
-
-            //Generate key
-
-            /*var random = RandomNumberGenerator.Create();
-            var bytes = new byte[(input.Length)];
-            random.GetBytes(bytes);
-            string mykey = "";
-            mykey = Encoding.ASCII.GetString(bytes);
-            key = mykey;
-            MessageBox.Show(key);*/
-
-            //have an array for key
-            //VernamKey(input);
             key = tbKey.Text;
             string output = "";
 
@@ -345,8 +301,6 @@ namespace Cryptron
                 char key_text = key[i % key.Length];
 
                 int xor;
-
-                
 
                 if (decrypt)
                 {
@@ -363,7 +317,6 @@ namespace Cryptron
                     char plaintext = (char)xor;
                     output += plaintext;
 
-
                 }
                 else
                 {
@@ -379,13 +332,8 @@ namespace Cryptron
                     char cipher = (char)xor;
                     output += cipher;
 
-                    //return output.ToString();
                 }
-                //encrypt using vernam cipher
-
-
-
-
+                
             }
             return output.ToString();
         }
@@ -517,73 +465,7 @@ namespace Cryptron
             }
         }
 
-        private string RandomCipher(string input, string key, bool decrypt = false)
-        {
-            /// This is a Ceasar cipher that uses a random key///
-
-            int shift = key.ToUpper().ToCharArray()[0] - 'A'; // calculate the shift value based on the key
-            if (decrypt) shift = -shift; // if decrypting, invert the shift value
-            char[] inputChars = input.ToCharArray();
-
-            for (int i = 0; i < inputChars.Length; i++)
-            {
-                char c = inputChars[i];
-                if (char.IsLetter(c))
-                {
-                    char offset = char.IsUpper(c) ? 'A' : 'a'; // calculate the ASCII offset for the case of the letter
-                    int shifted = (c - offset + shift) % 26; // apply the shift value and wrap around if needed
-                    if (shifted < 0) shifted += 26; // if the result is negative, add 26 to wrap around again
-                    inputChars[i] = (char)(shifted + offset); // convert back to ASCII character
-                }
-            }
-
-            return new string(inputChars); // return the modified string
-        }
-
-        private string AEScipher(string input, string key, bool decrypt = false)
-        {
-            if (decrypt)
-            {
-                byte[] inputBytes = Convert.FromBase64String(input);
-                byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-                byte[] resultBytes = new byte[inputBytes.Length];
-                using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
-                {
-                    aes.Key = keyBytes;
-                    aes.Mode = CipherMode.ECB;
-                    aes.Padding = PaddingMode.PKCS7;
-                    using (ICryptoTransform transform = aes.CreateDecryptor())
-                    {
-                        resultBytes = transform.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
-                    }
-                }
-                string result = Encoding.UTF8.GetString(resultBytes);
-                return result;
-            }
-            else
-            {
-                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-                byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-                byte[] resultBytes = new byte[inputBytes.Length];
-                using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
-                {
-                    aes.Key = keyBytes;
-                    aes.Mode = CipherMode.ECB;
-                    aes.Padding = PaddingMode.PKCS7;
-                    using (ICryptoTransform transform = aes.CreateEncryptor())
-                    {
-                        resultBytes = transform.TransformFinalBlock(inputBytes, 0, inputBytes.Length);
-                    }
-                }
-                string result = Convert.ToBase64String(resultBytes);
-                return result;
-            }
-
-
-
-        }
-
-
+       
         private void Transposition_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -627,10 +509,7 @@ namespace Cryptron
 
         }
 
-        private void rbAES_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void RVigenere_CheckedChanged(object sender, EventArgs e)
         {

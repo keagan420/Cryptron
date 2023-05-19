@@ -30,8 +30,6 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
-            rbAES = new RadioButton();
-            radioButton4 = new RadioButton();
             Transposition = new RadioButton();
             RVernam = new RadioButton();
             RVigenere = new RadioButton();
@@ -39,13 +37,13 @@
             tbKey = new RichTextBox();
             bttnGenerateKey = new Button();
             groupBox3 = new GroupBox();
-            button2 = new Button();
             button1 = new Button();
             rtbMessage = new RichTextBox();
             btnSaveFile = new Button();
             btnBrowseFiles = new Button();
             btnDecrypt = new Button();
             btnEncrypt = new Button();
+            button2 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -63,8 +61,6 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(rbAES);
-            groupBox1.Controls.Add(radioButton4);
             groupBox1.Controls.Add(Transposition);
             groupBox1.Controls.Add(RVernam);
             groupBox1.Controls.Add(RVigenere);
@@ -76,32 +72,6 @@
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Select Encpryption Method";
-            // 
-            // rbAES
-            // 
-            rbAES.AutoSize = true;
-            rbAES.Location = new Point(181, 28);
-            rbAES.Margin = new Padding(3, 4, 3, 4);
-            rbAES.Name = "rbAES";
-            rbAES.Size = new Size(56, 24);
-            rbAES.TabIndex = 4;
-            rbAES.TabStop = true;
-            rbAES.Text = "AES";
-            rbAES.UseVisualStyleBackColor = true;
-            rbAES.CheckedChanged += rbAES_CheckedChanged;
-            // 
-            // radioButton4
-            // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(122, 63);
-            radioButton4.Margin = new Padding(3, 4, 3, 4);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(74, 24);
-            radioButton4.TabIndex = 3;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "Ceasar";
-            radioButton4.UseVisualStyleBackColor = true;
-            radioButton4.CheckedChanged += radioButton4_CheckedChanged;
             // 
             // Transposition
             // 
@@ -193,17 +163,6 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Encrypt/Decrypt ";
             // 
-            // button2
-            // 
-            button2.Location = new Point(19, 276);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(115, 52);
-            button2.TabIndex = 8;
-            button2.Text = "Book Cipher";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
             // button1
             // 
             button1.Location = new Point(19, 229);
@@ -270,6 +229,17 @@
             btnEncrypt.UseVisualStyleBackColor = true;
             btnEncrypt.Click += btnEncrypt_Click;
             // 
+            // button2
+            // 
+            button2.Location = new Point(19, 276);
+            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(115, 52);
+            button2.TabIndex = 8;
+            button2.Text = "Custom Cipher";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -296,7 +266,6 @@
 
         private Label label1;
         private GroupBox groupBox1;
-        private RadioButton radioButton4;
         private RadioButton Transposition;
         private RadioButton RVernam;
         private RadioButton RVigenere;
@@ -311,6 +280,5 @@
         private Button button1;
         private RichTextBox tbKey;
         private Button button2;
-        private RadioButton rbAES;
     }
 }

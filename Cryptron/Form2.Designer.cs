@@ -30,17 +30,20 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
-            tbMessage = new RichTextBox();
-            tbKey = new RichTextBox();
+            tbPlainText = new RichTextBox();
+            tbCiphertext = new RichTextBox();
             groupBox2 = new GroupBox();
-            btnGenerateKey = new Button();
+            btnSaveFile = new Button();
+            btnBrowseFile = new Button();
             tbText = new RichTextBox();
             btnDecrypt = new Button();
             btnEncrypt = new Button();
+            btnGenerateKey = new Button();
             groupBox3 = new GroupBox();
             button2 = new Button();
             groupBox4 = new GroupBox();
-            tbStart = new RichTextBox();
+            tbKey = new RichTextBox();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -62,7 +65,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(tbMessage);
+            groupBox1.Controls.Add(tbPlainText);
             groupBox1.ForeColor = SystemColors.ButtonFace;
             groupBox1.Location = new Point(33, 156);
             groupBox1.Margin = new Padding(3, 4, 3, 4);
@@ -73,27 +76,28 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Enter message";
             // 
-            // tbMessage
+            // tbPlainText
             // 
-            tbMessage.Location = new Point(21, 29);
-            tbMessage.Margin = new Padding(3, 4, 3, 4);
-            tbMessage.Name = "tbMessage";
-            tbMessage.Size = new Size(448, 52);
-            tbMessage.TabIndex = 0;
-            tbMessage.Text = "";
+            tbPlainText.Location = new Point(21, 29);
+            tbPlainText.Margin = new Padding(3, 4, 3, 4);
+            tbPlainText.Name = "tbPlainText";
+            tbPlainText.Size = new Size(448, 52);
+            tbPlainText.TabIndex = 0;
+            tbPlainText.Text = "";
             // 
-            // tbKey
+            // tbCiphertext
             // 
-            tbKey.Location = new Point(21, 29);
-            tbKey.Margin = new Padding(3, 4, 3, 4);
-            tbKey.Name = "tbKey";
-            tbKey.Size = new Size(674, 39);
-            tbKey.TabIndex = 0;
-            tbKey.Text = "";
+            tbCiphertext.Location = new Point(21, 29);
+            tbCiphertext.Margin = new Padding(3, 4, 3, 4);
+            tbCiphertext.Name = "tbCiphertext";
+            tbCiphertext.Size = new Size(674, 39);
+            tbCiphertext.TabIndex = 0;
+            tbCiphertext.Text = "";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btnGenerateKey);
+            groupBox2.Controls.Add(btnSaveFile);
+            groupBox2.Controls.Add(btnBrowseFile);
             groupBox2.Controls.Add(tbText);
             groupBox2.Controls.Add(btnDecrypt);
             groupBox2.Controls.Add(btnEncrypt);
@@ -107,17 +111,29 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Choose ";
             // 
-            // btnGenerateKey
+            // btnSaveFile
             // 
-            btnGenerateKey.ForeColor = SystemColors.ActiveCaptionText;
-            btnGenerateKey.Location = new Point(46, 28);
-            btnGenerateKey.Margin = new Padding(3, 4, 3, 4);
-            btnGenerateKey.Name = "btnGenerateKey";
-            btnGenerateKey.Size = new Size(177, 67);
-            btnGenerateKey.TabIndex = 7;
-            btnGenerateKey.Text = "Generate Key";
-            btnGenerateKey.UseVisualStyleBackColor = true;
-            btnGenerateKey.Click += btnGenerateKey_Click;
+            btnSaveFile.ForeColor = SystemColors.ActiveCaptionText;
+            btnSaveFile.Location = new Point(46, 153);
+            btnSaveFile.Margin = new Padding(3, 4, 3, 4);
+            btnSaveFile.Name = "btnSaveFile";
+            btnSaveFile.Size = new Size(177, 37);
+            btnSaveFile.TabIndex = 8;
+            btnSaveFile.Text = "Save file";
+            btnSaveFile.UseVisualStyleBackColor = true;
+            btnSaveFile.Click += btnSaveFile_Click;
+            // 
+            // btnBrowseFile
+            // 
+            btnBrowseFile.ForeColor = SystemColors.ActiveCaptionText;
+            btnBrowseFile.Location = new Point(46, 35);
+            btnBrowseFile.Margin = new Padding(3, 4, 3, 4);
+            btnBrowseFile.Name = "btnBrowseFile";
+            btnBrowseFile.Size = new Size(177, 37);
+            btnBrowseFile.TabIndex = 7;
+            btnBrowseFile.Text = "Browse File";
+            btnBrowseFile.UseVisualStyleBackColor = true;
+            btnBrowseFile.Click += btnBrowseFile_Click;
             // 
             // tbText
             // 
@@ -131,10 +147,10 @@
             // btnDecrypt
             // 
             btnDecrypt.ForeColor = SystemColors.ActiveCaptionText;
-            btnDecrypt.Location = new Point(46, 179);
+            btnDecrypt.Location = new Point(46, 214);
             btnDecrypt.Margin = new Padding(3, 4, 3, 4);
             btnDecrypt.Name = "btnDecrypt";
-            btnDecrypt.Size = new Size(177, 61);
+            btnDecrypt.Size = new Size(177, 34);
             btnDecrypt.TabIndex = 5;
             btnDecrypt.Text = "Decrypt Message";
             btnDecrypt.UseVisualStyleBackColor = true;
@@ -143,18 +159,30 @@
             // btnEncrypt
             // 
             btnEncrypt.ForeColor = SystemColors.ActiveCaptionText;
-            btnEncrypt.Location = new Point(46, 104);
+            btnEncrypt.Location = new Point(46, 92);
             btnEncrypt.Margin = new Padding(3, 4, 3, 4);
             btnEncrypt.Name = "btnEncrypt";
-            btnEncrypt.Size = new Size(177, 67);
+            btnEncrypt.Size = new Size(177, 37);
             btnEncrypt.TabIndex = 3;
             btnEncrypt.Text = "Encrypt Message";
             btnEncrypt.UseVisualStyleBackColor = true;
             btnEncrypt.Click += btnEncrypt_Click;
             // 
+            // btnGenerateKey
+            // 
+            btnGenerateKey.ForeColor = SystemColors.ActiveCaptionText;
+            btnGenerateKey.Location = new Point(16, 44);
+            btnGenerateKey.Margin = new Padding(3, 4, 3, 4);
+            btnGenerateKey.Name = "btnGenerateKey";
+            btnGenerateKey.Size = new Size(110, 26);
+            btnGenerateKey.TabIndex = 7;
+            btnGenerateKey.Text = "Generate Key";
+            btnGenerateKey.UseVisualStyleBackColor = true;
+            btnGenerateKey.Click += btnGenerateKey_Click;
+            // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(tbKey);
+            groupBox3.Controls.Add(tbCiphertext);
             groupBox3.ForeColor = SystemColors.ButtonFace;
             groupBox3.Location = new Point(33, 634);
             groupBox3.Margin = new Padding(3, 4, 3, 4);
@@ -167,7 +195,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(834, 693);
+            button2.Location = new Point(859, 663);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(72, 51);
@@ -178,25 +206,36 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(tbStart);
+            groupBox4.Controls.Add(btnGenerateKey);
+            groupBox4.Controls.Add(tbKey);
             groupBox4.ForeColor = SystemColors.ButtonFace;
-            groupBox4.Location = new Point(624, 156);
+            groupBox4.Location = new Point(564, 156);
             groupBox4.Margin = new Padding(3, 4, 3, 4);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 4, 3, 4);
-            groupBox4.Size = new Size(188, 112);
+            groupBox4.Size = new Size(367, 112);
             groupBox4.TabIndex = 5;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Starting position";
+            groupBox4.Text = "Key";
             // 
-            // tbStart
+            // tbKey
             // 
-            tbStart.Location = new Point(32, 29);
-            tbStart.Margin = new Padding(3, 4, 3, 4);
-            tbStart.Name = "tbStart";
-            tbStart.Size = new Size(117, 52);
-            tbStart.TabIndex = 0;
-            tbStart.Text = "";
+            tbKey.Location = new Point(144, 28);
+            tbKey.Margin = new Padding(3, 4, 3, 4);
+            tbKey.Name = "tbKey";
+            tbKey.Size = new Size(185, 52);
+            tbKey.TabIndex = 0;
+            tbKey.Text = "";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(972, 663);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(66, 51);
+            button1.TabIndex = 6;
+            button1.Text = "Clear";
+            button1.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
@@ -204,6 +243,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(1075, 757);
+            Controls.Add(button1);
             Controls.Add(groupBox4);
             Controls.Add(button2);
             Controls.Add(groupBox3);
@@ -225,16 +265,19 @@
 
         private Label label1;
         private GroupBox groupBox1;
-        private RichTextBox tbKey;
+        private RichTextBox tbCiphertext;
         private GroupBox groupBox2;
         private Button btnDecrypt;
         private Button btnEncrypt;
         private GroupBox groupBox3;
-        private RichTextBox tbMessage;
+        private RichTextBox tbPlainText;
         private Button button2;
         private RichTextBox tbText;
         private GroupBox groupBox4;
-        private RichTextBox tbStart;
+        private RichTextBox tbKey;
         private Button btnGenerateKey;
+        private Button btnSaveFile;
+        private Button btnBrowseFile;
+        private Button button1;
     }
 }
